@@ -50,6 +50,14 @@ export function Header({ className }: HeaderProps) {
               Contact
             </Link>
             <Link
+              href="/flood-information"
+              className="transition-colors hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300 flex items-center gap-1"
+              title="Flood Information - Kashmir region flood monitoring and safety"
+            >
+              <span>🌊</span>
+              <span>Flood Info</span>
+            </Link>
+            <Link
               href="/design-system"
               className="transition-colors hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300 flex items-center gap-1"
               title="Design System - Component showcase and documentation"
