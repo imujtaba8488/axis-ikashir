@@ -121,16 +121,24 @@ export function WaterLevelChart({ data, className }: WaterLevelChartProps) {
   };
 
   return (
-    <Card className={className}>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg border border-blue-200 dark:border-blue-700">
-            <TrendingUp className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+    <Card
+      className={`group relative overflow-hidden border-0 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/50 dark:to-blue-900/30 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 ${className}`}
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent"></div>
+      <CardHeader className="relative">
+        <CardTitle className="flex items-center gap-4 text-blue-800 dark:text-blue-200">
+          <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg">
+            <TrendingUp className="h-7 w-7 text-white" />
           </div>
-          Water Level Monitoring
+          <div>
+            <div className="text-xl font-bold">Water Level Monitoring</div>
+            <div className="text-sm font-medium text-blue-600 dark:text-blue-400">
+              Real-Time Data
+            </div>
+          </div>
         </CardTitle>
-        <CardDescription>
-          Real-time water levels for major water bodies in Kashmir
+        <CardDescription className="text-blue-700 dark:text-blue-300 text-base">
+          Live water levels for major water bodies in Kashmir region
         </CardDescription>
       </CardHeader>
       <CardContent>

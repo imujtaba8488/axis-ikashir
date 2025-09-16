@@ -169,15 +169,23 @@ export function WeatherForecast({ forecast, className }: WeatherForecastProps) {
   };
 
   return (
-    <Card className={className}>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg border border-blue-200 dark:border-blue-700">
-            <CloudRain className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+    <Card
+      className={`group relative overflow-hidden border-0 bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-950/50 dark:to-indigo-900/30 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 ${className}`}
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent"></div>
+      <CardHeader className="relative">
+        <CardTitle className="flex items-center gap-4 text-indigo-800 dark:text-indigo-200">
+          <div className="p-3 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl shadow-lg">
+            <CloudRain className="h-7 w-7 text-white" />
           </div>
-          5-Day Weather Forecast
+          <div>
+            <div className="text-xl font-bold">5-Day Weather Forecast</div>
+            <div className="text-sm font-medium text-indigo-600 dark:text-indigo-400">
+              Risk Assessment
+            </div>
+          </div>
         </CardTitle>
-        <CardDescription>
+        <CardDescription className="text-indigo-700 dark:text-indigo-300 text-base">
           Weather conditions and flood risk assessment for Kashmir
         </CardDescription>
       </CardHeader>

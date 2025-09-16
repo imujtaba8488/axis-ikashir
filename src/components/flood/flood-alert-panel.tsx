@@ -130,15 +130,23 @@ export function FloodAlertPanel({ alerts, className }: FloodAlertPanelProps) {
   };
 
   return (
-    <Card className={className}>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <div className="p-2 bg-red-100 dark:bg-red-900 rounded-lg border border-red-200 dark:border-red-700">
-            <AlertTriangle className="h-5 w-5 text-red-600 dark:text-red-400" />
+    <Card
+      className={`group relative overflow-hidden border-0 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-950/50 dark:to-red-900/30 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 ${className}`}
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent"></div>
+      <CardHeader className="relative">
+        <CardTitle className="flex items-center gap-4 text-red-800 dark:text-red-200">
+          <div className="p-3 bg-gradient-to-br from-red-500 to-red-600 rounded-xl shadow-lg">
+            <AlertTriangle className="h-7 w-7 text-white" />
           </div>
-          Active Flood Alerts
+          <div>
+            <div className="text-xl font-bold">Active Flood Alerts</div>
+            <div className="text-sm font-medium text-red-600 dark:text-red-400">
+              Live Updates
+            </div>
+          </div>
         </CardTitle>
-        <CardDescription>
+        <CardDescription className="text-red-700 dark:text-red-300 text-base">
           Current flood warnings and alerts for Kashmir region
         </CardDescription>
       </CardHeader>
