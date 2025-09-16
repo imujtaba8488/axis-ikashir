@@ -1,7 +1,10 @@
-import { env } from '@/config/env';
 import { VALIDATION } from '@/constants';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import { AuthService } from '@/features/auth/services/auth-service';
+import {
+  createErrorResponse,
+  createSuccessResponse,
+  createValidationErrorResponse,
+} from '@/shared/utils/api-response';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
@@ -57,54 +60,18 @@ export async function POST(request: NextRequest) {
 
     // Validate request body
     const validatedData = registerSchema.parse(body);
-    const { name, email, password } = validatedData;
 
-    // TODO: Replace with actual database operations
-    // Check if user already exists
-    const existingUser = null; // await getUserByEmail(email);
-    if (existingUser) {
-      return NextResponse.json(
-        { error: 'User with this email already exists' },
-        { status: 409 }
-      );
-    }
-
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 12);
-
-    // TODO: Create user in database
-    const newUser = {
-      id: '2', // This would come from the database
-      name,
-      email,
-      password: hashedPassword,
-      createdAt: new Date(),
-    };
-
-    // Generate JWT token
-    const token = jwt.sign(
-      {
-        userId: newUser.id,
-        email: newUser.email,
-        name: newUser.name,
-      },
-      env.NEXTAUTH_SECRET,
-      { expiresIn: '7d' }
-    );
+    // Use auth service for business logic
+    const authService = new AuthService();
+    const result = await authService.register(validatedData);
 
     // Create response with token
-    const response = NextResponse.json({
-      success: true,
-      message: 'Registration successful',
-      user: {
-        id: newUser.id,
-        email: newUser.email,
-        name: newUser.name,
-      },
-    });
+    const response = NextResponse.json(
+      createSuccessResponse(result.user, 'Registration successful')
+    );
 
     // Set HTTP-only cookie
-    response.cookies.set('auth-token', token, {
+    response.cookies.set('auth-token', result.token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
@@ -116,15 +83,19 @@ export async function POST(request: NextRequest) {
     console.error('Registration error:', error);
 
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: 'Validation error', details: error.issues },
-        { status: 400 }
-      );
+      return NextResponse.json(createValidationErrorResponse(error.issues), {
+        status: 400,
+      });
     }
 
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    if (error instanceof Error) {
+      return NextResponse.json(createErrorResponse(error.message), {
+        status: error.message.includes('already exists') ? 409 : 400,
+      });
+    }
+
+    return NextResponse.json(createErrorResponse('Internal server error'), {
+      status: 500,
+    });
   }
 }
