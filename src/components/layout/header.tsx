@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
@@ -61,6 +62,7 @@ export function Header({ className }: HeaderProps) {
             {/* Search can be added here */}
           </div>
           <nav className="flex items-center space-x-2">
+            <ThemeToggle />
             <Button variant="ghost" size="sm" asChild>
               <Link href="/auth/login">Login</Link>
             </Button>

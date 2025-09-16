@@ -130,3 +130,27 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Theme transition support */
+*,
+*::before,
+*::after {
+  transition: 
+    background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out,
+    color 0.2s ease-in-out,
+    fill 0.2s ease-in-out,
+    stroke 0.2s ease-in-out,
+    opacity 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out,
+    transform 0.2s ease-in-out;
+}
+
+/* Disable transitions for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
