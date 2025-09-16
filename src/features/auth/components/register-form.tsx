@@ -68,7 +68,7 @@ type RegisterFormData = z.infer<typeof registerSchema>;
  * Handles new user registration with form validation using react-hook-form
  */
 export function RegisterForm() {
-  const { register, isLoading, error, clearError } = useRegister();
+  const { register, isLoading, error } = useRegister();
 
   const form = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),

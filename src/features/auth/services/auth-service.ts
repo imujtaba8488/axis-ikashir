@@ -111,7 +111,7 @@ export class AuthService extends BaseService {
         name: string;
       };
       return decoded;
-    } catch (error) {
+    } catch {
       throw new Error('Invalid token');
     }
   }

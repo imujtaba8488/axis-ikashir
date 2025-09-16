@@ -36,7 +36,7 @@ type LoginFormData = z.infer<typeof loginSchema>;
  * Handles user authentication with form validation using react-hook-form
  */
 export function LoginForm() {
-  const { login, isLoading, error, clearError } = useLogin();
+  const { login, isLoading, error } = useLogin();
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),

@@ -12,15 +12,15 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Public routes that don't require authentication
-  const publicRoutes = [
-    '/',
-    '/auth/login',
-    '/auth/register',
-    '/auth/forgot-password',
-    '/auth/reset-password',
-    '/about',
-    '/contact',
-  ];
+  // const publicRoutes = [
+  //   '/',
+  //   '/auth/login',
+  //   '/auth/register',
+  //   '/auth/forgot-password',
+  //   '/auth/reset-password',
+  //   '/about',
+  //   '/contact',
+  // ];
 
   // Protected routes that require authentication
   const protectedRoutes = ['/dashboard', '/admin', '/profile', '/settings'];
@@ -29,9 +29,9 @@ export function middleware(request: NextRequest) {
   const protectedApiRoutes = ['/api/users', '/api/profile', '/api/admin'];
 
   // Check if the current path is public
-  const isPublicRoute = publicRoutes.some(
-    route => pathname === route || pathname.startsWith(route + '/')
-  );
+  // const isPublicRoute = publicRoutes.some(
+  //   route => pathname === route || pathname.startsWith(route + '/')
+  // );
 
   // Check if the current path is protected
   const isProtectedRoute = protectedRoutes.some(route =>

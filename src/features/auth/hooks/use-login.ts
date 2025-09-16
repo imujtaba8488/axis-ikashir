@@ -35,7 +35,7 @@ export function useLogin() {
         setError(result.error || 'Login failed');
         return null;
       }
-    } catch (err) {
+    } catch {
       setError('Network error. Please try again.');
       return null;
     } finally {

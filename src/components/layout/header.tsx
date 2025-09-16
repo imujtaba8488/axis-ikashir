@@ -46,6 +46,14 @@ export function Header({ className }: HeaderProps) {
             >
               Contact
             </Link>
+            <Link
+              href="/design-system"
+              className="transition-colors hover:text-foreground/80 text-foreground/60 flex items-center gap-1"
+              title="Design System - Component showcase and documentation"
+            >
+              <span>🎨</span>
+              <span>Design System</span>
+            </Link>
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">

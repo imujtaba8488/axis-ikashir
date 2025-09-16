@@ -35,7 +35,7 @@ export function useRegister() {
         setError(result.error || 'Registration failed');
         return null;
       }
-    } catch (err) {
+    } catch {
       setError('Network error. Please try again.');
       return null;
     } finally {
