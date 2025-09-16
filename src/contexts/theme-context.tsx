@@ -8,6 +8,7 @@ interface ThemeContextType {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   resolvedTheme: 'light' | 'dark';
+  mounted: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -27,22 +28,53 @@ export function ThemeProvider({
   defaultTheme = 'system',
   storageKey = 'axis-ikashir-theme',
 }: ThemeProviderProps) {
+  // Always start with default theme to ensure SSR consistency
   const [theme, setTheme] = useState<Theme>(defaultTheme);
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
+  const [mounted, setMounted] = useState(false);
 
-  // Load theme from localStorage on mount
+  // Mark as mounted after hydration
   useEffect(() => {
-    const storedTheme = localStorage.getItem(storageKey) as Theme;
-    if (storedTheme && ['light', 'dark', 'system'].includes(storedTheme)) {
-      setTheme(storedTheme);
+    setMounted(true);
+  }, []);
+
+  // Load theme from localStorage after mounting
+  useEffect(() => {
+    if (!mounted) return;
+
+    try {
+      const storedTheme = localStorage.getItem(storageKey) as Theme;
+      if (storedTheme && ['light', 'dark', 'system'].includes(storedTheme)) {
+        setTheme(storedTheme);
+      }
+    } catch {
+      // Ignore localStorage errors
     }
+  }, [mounted, storageKey]);
+
+  // Sync theme with localStorage changes (for multiple tabs)
+  useEffect(() => {
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === storageKey && e.newValue) {
+        const newTheme = e.newValue as Theme;
+        if (['light', 'dark', 'system'].includes(newTheme)) {
+          setTheme(newTheme);
+        }
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
   }, [storageKey]);
 
   // Update resolved theme based on current theme setting
   useEffect(() => {
+    if (!mounted) return;
+
     const updateResolvedTheme = () => {
       if (theme === 'system') {
-        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+          .matches
           ? 'dark'
           : 'light';
         setResolvedTheme(systemTheme);
@@ -63,40 +95,47 @@ export function ThemeProvider({
 
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [theme]);
+  }, [theme, mounted]);
 
   // Apply theme to document
   useEffect(() => {
+    if (!mounted) return;
+
     const root = window.document.documentElement;
-    
+
     root.classList.remove('light', 'dark');
     root.classList.add(resolvedTheme);
-    
+
     // Update meta theme-color for mobile browsers
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (metaThemeColor) {
       metaThemeColor.setAttribute(
         'content',
-        resolvedTheme === 'dark' ? '#0a0a0a' : '#ffffff'
+        resolvedTheme === 'dark' ? '#000000' : '#ffffff'
       );
     }
-  }, [resolvedTheme]);
+  }, [resolvedTheme, mounted]);
 
   // Save theme to localStorage
   useEffect(() => {
-    localStorage.setItem(storageKey, theme);
-  }, [theme, storageKey]);
+    if (!mounted) return;
+
+    try {
+      localStorage.setItem(storageKey, theme);
+    } catch {
+      // Ignore localStorage errors
+    }
+  }, [theme, storageKey, mounted]);
 
   const value: ThemeContextType = {
     theme,
     setTheme,
     resolvedTheme,
+    mounted,
   };
 
   return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 }
 

@@ -1,16 +1,25 @@
 'use client';
 
-import { Moon, Sun, Monitor } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/contexts/theme-context';
 import { cn } from '@/lib/utils';
+import { Monitor, Moon, Sun } from 'lucide-react';
 
 /**
  * Theme toggle component
  * Provides a button to switch between light, dark, and system themes
  */
 export function ThemeToggle() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme, mounted } = useTheme();
+
+  // Don't render until mounted to prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <Button variant="ghost" size="sm" className="h-9 w-9 p-0" disabled>
+        <Sun className="h-4 w-4" />
+      </Button>
+    );
+  }
 
   const cycleTheme = () => {
     if (theme === 'light') {
@@ -62,7 +71,7 @@ export function ThemeToggle() {
         >
           {getIcon()}
         </div>
-        
+
         {/* Theme indicator */}
         <div
           className={cn(
@@ -82,7 +91,22 @@ export function ThemeToggle() {
  * Alternative version that shows the current theme name
  */
 export function ThemeToggleWithLabel() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme, mounted } = useTheme();
+
+  // Don't render until mounted to prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <Button
+        variant="ghost"
+        size="sm"
+        className="flex items-center gap-2 px-3 py-2 h-9"
+        disabled
+      >
+        <Sun className="h-4 w-4" />
+        <span className="text-sm font-medium">Light</span>
+      </Button>
+    );
+  }
 
   const cycleTheme = () => {
     if (theme === 'light') {

@@ -15,22 +15,31 @@ export function Footer({ className }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className={cn('border-t bg-background', className)}>
+    <footer
+      className={cn(
+        'border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-black',
+        className
+      )}
+    >
       <div className="container py-8 md:py-12">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           <div className="col-span-2 md:col-span-1">
-            <h3 className="font-semibold">Axis Ikashir</h3>
-            <p className="text-sm text-muted-foreground mt-2">
+            <h3 className="font-semibold text-gray-900 dark:text-white">
+              Axis Ikashir
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
               Building the future of digital experiences.
             </p>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Product</h4>
+            <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">
+              Product
+            </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   href="/features"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 >
                   Features
                 </Link>
@@ -38,7 +47,7 @@ export function Footer({ className }: FooterProps) {
               <li>
                 <Link
                   href="/pricing"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 >
                   Pricing
                 </Link>
@@ -46,7 +55,7 @@ export function Footer({ className }: FooterProps) {
               <li>
                 <Link
                   href="/docs"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 >
                   Documentation
                 </Link>
@@ -54,12 +63,14 @@ export function Footer({ className }: FooterProps) {
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
+            <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">
+              Company
+            </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   href="/about"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 >
                   About
                 </Link>
@@ -67,7 +78,7 @@ export function Footer({ className }: FooterProps) {
               <li>
                 <Link
                   href="/blog"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 >
                   Blog
                 </Link>
@@ -75,7 +86,7 @@ export function Footer({ className }: FooterProps) {
               <li>
                 <Link
                   href="/careers"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 >
                   Careers
                 </Link>
@@ -83,12 +94,14 @@ export function Footer({ className }: FooterProps) {
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Support</h4>
+            <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">
+              Support
+            </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   href="/help"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 >
                   Help Center
                 </Link>
@@ -96,7 +109,7 @@ export function Footer({ className }: FooterProps) {
               <li>
                 <Link
                   href="/contact"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 >
                   Contact
                 </Link>
@@ -104,7 +117,7 @@ export function Footer({ className }: FooterProps) {
               <li>
                 <Link
                   href="/privacy"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 >
                   Privacy
                 </Link>
@@ -113,7 +126,7 @@ export function Footer({ className }: FooterProps) {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t">
-          <p className="text-sm text-muted-foreground text-center">
+          <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
             © {currentYear} Axis Ikashir. All rights reserved.
           </p>
         </div>

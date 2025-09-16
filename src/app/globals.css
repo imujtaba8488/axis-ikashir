@@ -84,6 +84,21 @@ body {
   color: hsl(var(--foreground));
 }
 
+/* Prevent white flash during theme transitions */
+html {
+  background-color: white;
+  transition: background-color 0.1s ease-in-out;
+}
+
+html.dark {
+  background-color: black;
+}
+
+/* Ensure body background matches html */
+body {
+  background-color: inherit;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -135,7 +150,7 @@ body {
 *,
 *::before,
 *::after {
-  transition: 
+  transition:
     background-color 0.2s ease-in-out,
     border-color 0.2s ease-in-out,
     color 0.2s ease-in-out,

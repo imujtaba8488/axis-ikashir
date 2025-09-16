@@ -53,11 +53,11 @@ import {
  */
 export default function DesignSystemPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30">
+    <div className="min-h-screen bg-background dark:bg-black">
       <div className="max-w-7xl mx-auto px-6 py-16 space-y-20">
         {/* Hero Section */}
         <div className="text-center space-y-8 pt-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-gray-800/80 border border-gray-300 dark:border-gray-700 backdrop-blur-sm shadow-lg">
             <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span className="text-sm font-medium text-primary">
               Modern Design System
@@ -65,7 +65,7 @@ export default function DesignSystemPage() {
           </div>
 
           <div className="space-y-6">
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-foreground via-foreground to-foreground/80 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white font-black tracking-tight leading-tight">
               Design System
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
@@ -149,10 +149,10 @@ export default function DesignSystemPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Buttons */}
-            <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xl dark:shadow-2xl">
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center">
                     <Zap className="w-4 h-4 text-primary" />
                   </div>
                   Buttons
@@ -198,10 +198,10 @@ export default function DesignSystemPage() {
             </Card>
 
             {/* Dialog & Sheet */}
-            <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xl dark:shadow-2xl">
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center">
                     <Menu className="w-4 h-4 text-primary" />
                   </div>
                   Modals & Sheets
@@ -270,10 +270,10 @@ export default function DesignSystemPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xl dark:shadow-2xl">
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center">
                     <Code className="w-4 h-4 text-primary" />
                   </div>
                   Input Fields
@@ -324,10 +324,10 @@ export default function DesignSystemPage() {
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xl dark:shadow-2xl">
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center">
                     <Palette className="w-4 h-4 text-primary" />
                   </div>
                   Select & Textarea
@@ -383,7 +383,7 @@ export default function DesignSystemPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xl dark:shadow-2xl">
               <CardHeader className="pb-4">
                 <CardTitle className="text-lg">Badges</CardTitle>
                 <CardDescription>Status indicators and labels</CardDescription>
@@ -398,7 +398,7 @@ export default function DesignSystemPage() {
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xl dark:shadow-2xl">
               <CardHeader className="pb-4">
                 <CardTitle className="text-lg">Avatars</CardTitle>
                 <CardDescription>
@@ -424,7 +424,7 @@ export default function DesignSystemPage() {
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xl dark:shadow-2xl">
               <CardHeader className="pb-4">
                 <CardTitle className="text-lg">Cards</CardTitle>
                 <CardDescription>
@@ -455,10 +455,10 @@ export default function DesignSystemPage() {
             </p>
           </div>
 
-          <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
+          <Card className="group hover:shadow-lg transition-all duration-300 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xl dark:shadow-2xl">
             <CardHeader className="pb-6">
               <CardTitle className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center">
                   <span className="text-sm">✍️</span>
                 </div>
                 Headings & Body
@@ -599,7 +599,7 @@ export default function DesignSystemPage() {
             ].map(color => (
               <div key={color.name} className="group">
                 <div
-                  className={`h-16 w-full rounded-lg ${color.class} flex items-center justify-center text-sm font-medium transition-transform group-hover:scale-105`}
+                  className={`h-16 w-full rounded-lg ${color.class} flex items-center justify-center text-sm font-medium transition-transform group-hover:scale-105 shadow-lg`}
                 >
                   {color.name}
                 </div>
@@ -615,7 +615,7 @@ export default function DesignSystemPage() {
         </section>
 
         {/* Footer */}
-        <div className="text-center space-y-4 pt-16 border-t">
+        <div className="text-center space-y-4 pt-16 border-t border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-lg p-8">
           <p className="text-muted-foreground">
             Built with ❤️ using Next.js, TypeScript, and shadcn/ui
           </p>

@@ -21,18 +21,21 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <MainLayout>
-      <div className="min-h-screen bg-gradient-to-br from-background to-muted/20">
+      <div className="min-h-screen bg-background dark:bg-black">
         <ResponsiveContainer size="xl" padding="lg">
           <div className="py-16 space-y-16">
             {/* Hero Section */}
             <div className="text-center space-y-8">
               <div className="space-y-4">
-                <Badge variant="outline" className="text-sm">
+                <Badge
+                  variant="outline"
+                  className="text-sm border-gray-300 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm"
+                >
                   ✨ Now with shadcn/ui Design System
                 </Badge>
                 <h1 className="text-4xl md:text-6xl font-bold text-foreground">
                   Welcome to{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">
+                  <span className="text-black dark:text-white font-black tracking-tight">
                     Axis Ikashir
                   </span>
                 </h1>
@@ -65,10 +68,10 @@ export default function Home() {
               </div>
 
               <ResponsiveGrid cols={{ default: 1, md: 2, lg: 3 }} gap="lg">
-                <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xl dark:shadow-2xl">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-3">
-                      <div className="p-2 bg-primary/10 rounded-lg">
+                      <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
                         <span className="text-2xl">⚡</span>
                       </div>
                       Fast Performance
@@ -86,10 +89,10 @@ export default function Home() {
                   </CardContent>
                 </Card>
 
-                <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xl dark:shadow-2xl">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-3">
-                      <div className="p-2 bg-primary/10 rounded-lg">
+                      <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
                         <span className="text-2xl">🎨</span>
                       </div>
                       Beautiful Design
@@ -107,10 +110,10 @@ export default function Home() {
                   </CardContent>
                 </Card>
 
-                <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xl dark:shadow-2xl">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-3">
-                      <div className="p-2 bg-primary/10 rounded-lg">
+                      <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
                         <span className="text-2xl">🏗️</span>
                       </div>
                       Scalable Architecture
@@ -127,10 +130,10 @@ export default function Home() {
                   </CardContent>
                 </Card>
 
-                <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xl dark:shadow-2xl">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-3">
-                      <div className="p-2 bg-primary/10 rounded-lg">
+                      <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
                         <span className="text-2xl">🔒</span>
                       </div>
                       Secure & Reliable
@@ -147,10 +150,10 @@ export default function Home() {
                   </CardContent>
                 </Card>
 
-                <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xl dark:shadow-2xl">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-3">
-                      <div className="p-2 bg-primary/10 rounded-lg">
+                      <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
                         <span className="text-2xl">📱</span>
                       </div>
                       Responsive Design
@@ -167,10 +170,10 @@ export default function Home() {
                   </CardContent>
                 </Card>
 
-                <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xl dark:shadow-2xl">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-3">
-                      <div className="p-2 bg-primary/10 rounded-lg">
+                      <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
                         <span className="text-2xl">♿</span>
                       </div>
                       Accessible
@@ -210,7 +213,7 @@ export default function Home() {
                 </Button>
               </div>
 
-              <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
+              <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-lg p-4 border border-gray-200 dark:border-gray-800">
                 <span>Trusted by developers worldwide</span>
                 <div className="flex -space-x-2">
                   <Avatar className="h-8 w-8 border-2 border-background">

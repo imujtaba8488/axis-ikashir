@@ -1,6 +1,7 @@
+import { ThemeProvider } from '@/contexts/theme-context';
+import { getThemeScript } from '@/lib/theme-script';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { ThemeProvider } from '@/contexts/theme-context';
 import './globals.css';
 
 const geistSans = Geist({
@@ -36,14 +37,16 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#ffffff" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: getThemeScript('axis-ikashir-theme'),
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          defaultTheme="system"
-          storageKey="axis-ikashir-theme"
-        >
+        <ThemeProvider defaultTheme="system" storageKey="axis-ikashir-theme">
           {children}
         </ThemeProvider>
       </body>
